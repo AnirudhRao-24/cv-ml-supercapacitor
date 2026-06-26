@@ -12,6 +12,6 @@ export const firebaseConfig = {
 
 // Production API URL configuration (deployed on Render)
 export const apiConfig = {
-  apiBaseUrl: "https://cv-ml-supercapacitor-bfo-api.onrender.com"
+  apiBaseUrl: "https://cv-ml-supercapacitor-bfo-i0cu.onrender.com"
 };
 
