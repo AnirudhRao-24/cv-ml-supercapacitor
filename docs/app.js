@@ -12,7 +12,7 @@ let currentRunPredicted = [];
 // 1. FIREBASE AUTHENTICATION (WITH MOCK FALLBACK)
 // ==========================================
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 let auth = null;
 let isUsingMockAuth = false;
@@ -53,6 +53,7 @@ const domElements = {
     emailInput: document.getElementById('email'),
     passwordInput: document.getElementById('password'),
     btnLogin: document.getElementById('btn-login'),
+    btnRegister: document.getElementById('btn-register'),
     btnLogout: document.getElementById('btn-logout'),
     errorMsg: document.getElementById('error-msg')
 };
@@ -82,6 +83,40 @@ domElements.btnLogin.addEventListener('click', () => {
                 domElements.errorMsg.style.display = 'block';
                 domElements.errorMsg.textContent = `Access Denied: ${err.message}`;
                 domElements.btnLogin.innerText = "Authenticate Portal";
+            });
+    }
+});
+
+domElements.btnRegister.addEventListener('click', () => {
+    const email = domElements.emailInput.value;
+    const password = domElements.passwordInput.value;
+    
+    if (!email || !password) {
+        domElements.errorMsg.style.display = 'block';
+        domElements.errorMsg.textContent = "Please enter an email and password to register.";
+        return;
+    }
+    
+    domElements.btnRegister.innerText = "Creating Account...";
+
+    if (isUsingMockAuth) {
+        setTimeout(() => {
+            domElements.errorMsg.style.display = 'block';
+            domElements.errorMsg.textContent = "Registration not available in offline demo mode.";
+            domElements.btnRegister.innerText = "Create New Account";
+        }, 600);
+    } else {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                domElements.errorMsg.style.display = 'none';
+                domElements.loginSection.classList.remove('active');
+                domElements.mainApp.style.display = 'block';
+                domElements.btnRegister.innerText = "Create New Account";
+            })
+            .catch((err) => {
+                domElements.errorMsg.style.display = 'block';
+                domElements.errorMsg.textContent = `Registration Failed: ${err.message}`;
+                domElements.btnRegister.innerText = "Create New Account";
             });
     }
 });
