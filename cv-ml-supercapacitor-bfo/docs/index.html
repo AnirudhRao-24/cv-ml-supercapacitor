@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supercapacitor ML Research Dashboard</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="login-section" class="active">
+        <div class="login-card glass-panel">
+            <div class="login-header">
+                <h2>Researcher Portal</h2>
+                <p>Sign in to access the ML pipeline.</p>
+            </div>
+            <div class="input-group">
+                <label for="email">Institutional Email</label>
+                <input type="email" id="email" placeholder="researcher@university.edu" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="••••••••" required>
+            </div>
+            <button id="btn-login" class="btn-primary w-100">Authenticate Portal</button>
+            <p id="error-msg" class="error-message"></p>
+        </div>
+    </div>
+
+    <div id="main-app">
+        <nav class="navbar glass-panel">
+            <div class="nav-brand">
+                <div class="logo-dot"></div>
+                <span>BiFeO3 ML Pipeline</span>
+            </div>
+            <div class="nav-tabs">
+                <button id="btn-tab-slides" class="tab-btn active">Presentation Deck</button>
+                <button id="btn-tab-demo" class="tab-btn">Live Sandbox</button>
+                <button id="btn-logout" class="btn-outline">Sign Out</button>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div id="slides-section" class="section active">
+                <div class="slide-container glass-panel">
+                    
+                    <div class="slide active" id="slide-1">
+                        <h2>1. ML-Based Prediction of CV Behavior</h2>
+                        <div class="hero-text">
+                            <p><strong>Focus:</strong> Zinc and Cobalt-substituted Bismuth Ferrite (BiFeO3).</p>
+                            <p>Accelerating supercapacitor research by replacing physical trial-and-error with high-accuracy predictive AI.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="slide" id="slide-2">
+                        <h2>2. The Core Problem</h2>
+                        <ul>
+                            <li>Traditional Cyclic Voltammetry (CV) testing is time-intensive and heavily resource-dependent.</li>
+                            <li>Physical synthesis of multiple dopant variations creates severe bottlenecks in next-generation battery research.</li>
+                        </ul>
+                    </div>
+
+                    <div class="slide" id="slide-3">
+                        <h2>3. Project Objective</h2>
+                        <ul>
+                            <li>Develop a full-stack Machine Learning pipeline capable of predicting CV current curves based purely on physical input parameters.</li>
+                            <li>Reduce laboratory turnaround times from days to milliseconds.</li>
+                        </ul>
+                    </div>
+
+                    <div class="slide" id="slide-4">
+                        <h2>4. Material Focus: Bismuth Ferrite</h2>
+                        <ul>
+                            <li>BiFeO3 offers unique multiferroic properties highly suitable for advanced energy storage.</li>
+                            <li>We analyze how specific Zn and Co substitutions affect its electrochemical performance and overall specific capacitance.</li>
+                        </ul>
+                    </div>
+
+                    <div class="slide" id="slide-5">
+                        <h2>5. Dataset Architecture</h2>
+                        <div class="slide-layout">
+                            <div class="slide-text">
+                                <ul>
+                                    <li><strong>Total Volume:</strong> 218,200 data points.</li>
+                                    <li><strong>Training Split:</strong> 216,200 rows to train the algorithms.</li>
+                                    <li><strong>Validation Split:</strong> 2,000 completely unseen rows for rigorous real-world testing.</li>
+                                    <li><strong>Inputs tracked:</strong> Potential, Scan Rate, Oxidation state.</li>
+                                </ul>
+                            </div>
+                            <div class="slide-chart"><canvas id="chart-dataset"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="slide" id="slide-6">
+                        <h2>6. Feature Engineering & Distribution</h2>
+                        <div class="slide-layout">
+                            <div class="slide-text">
+                                <ul>
+                                    <li>Text-based states (Oxidation/Reduction) were perfectly transformed into binary format for mathematical processing.</li>
+                                    <li>Applied standard scaling to ensure varying unit magnitudes do not skew the neural network weights.</li>
+                                    <li>The dataset represents a perfectly balanced electrochemical cycle.</li>
+                                </ul>
+                            </div>
+                            <div class="slide-chart"><canvas id="chart-redox"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="slide" id="slide-7">
+                        <h2>7. ML Pipeline Overview</h2>
+                        <ul>
+                            <li>A multi-model ensemble approach was engineered to capture different types of non-linear relationships.</li>
+                            <li>Combining deep learning with decision-tree logic ensures we do not over-index on a single mathematical philosophy.</li>
+                        </ul>
+                    </div>
+
+                    <div class="slide" id="slide-8">
+                        <h2>8. Base Model 1: Artificial Neural Network</h2>
+                        <div class="slide-layout">
+                            <div class="slide-text">
+                                <ul>
+                                    <li><strong>Architecture:</strong> Deep learning model with two hidden layers (100 nodes, 80 nodes) using ReLU activation.</li>
+                                    <li><strong>Strengths:</strong> Excels at identifying highly complex, hidden patterns in continuous datasets.</li>
+                                    <li><strong>Training Dynamics:</strong> Notice the rapid convergence in early epochs, minimizing Mean Squared Error (MSE) without overfitting the validation data.</li>
+                                </ul>
+                            </div>
+                            <div class="slide-chart"><canvas id="chart-ann"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="slide" id="slide-9">
+                        <h2>9. Base Model 2: Random Forest</h2>
+                        <div class="slide-layout">
+                            <div class="slide-text">
+                                <ul>
+                                    <li><strong>Architecture:</strong> Ensemble of 40 decision trees capped at a maximum depth of 11.</li>
+                                    <li><strong>Strengths:</strong> Provides exceptional stability and robust resistance to dataset noise.</li>
+                                    <li><strong>Feature Insight:</strong> The algorithm mathematically confirmed that 'Potential' and 'Scan Rate' are the dominant drivers of the electrochemical current.</li>
+                                </ul>
+                            </div>
+                            <div class="slide-chart"><canvas id="chart-rf"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="slide" id="slide-10">
+                        <h2>10. Base Model 3: XGBoost</h2>
+                        <div class="slide-layout">
+                            <div class="slide-text">
+                                <ul>
+                                    <li><strong>Architecture:</strong> Gradient boosting framework (100 estimators, 0.1 learning rate).</li>
+                                    <li><strong>Strengths:</strong> Sequentially corrects errors of previous trees, providing highly accurate fine-tuning.</li>
+                                    <li><strong>Boosting in Action:</strong> The RMSE drops sharply in distinct steps as each subsequent boosting round aggressively targets outlier data points.</li>
+                                </ul>
+                            </div>
+                            <div class="slide-chart"><canvas id="chart-xgb"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="slide" id="slide-11">
+                        <h2>11. Model Strengths & The Meta-Model</h2>
+                        <div class="slide-layout">
+                            <div class="slide-text">
+                                <ul>
+                                    <li>Every model has trade-offs. To solve this, we stacked the predictions of the ANN, RF, and XGBoost into a <strong>RidgeCV Regressor</strong>.</li>
+                                    <li>This "Boss Model" dynamically weights the underlying algorithms to maximize final accuracy.</li>
+                                </ul>
+                            </div>
+                            <div class="slide-chart"><canvas id="chart-radar"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="slide" id="slide-12">
+                        <h2>12. Training Accuracy Metrics</h2>
+                        <div class="slide-layout">
+                            <div class="slide-text">
+                                <ul>
+                                    <li><strong>Base Models Average R²:</strong> 97.50%</li>
+                                    <li><strong>Meta-Model Final R²:</strong> 97.85%</li>
+                                    <li>The stacking technique successfully outperformed any individual algorithm during the training phase.</li>
+                                </ul>
+                            </div>
+                            <div class="slide-chart"><canvas id="chart-accuracy"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="slide" id="slide-13">
+                        <h2>13. Real-World Validation (Unseen Data)</h2>
+                        <div class="slide-layout">
+                            <div class="slide-text">
+                                <ul>
+                                    <li>Tested against an entirely unseen dataset recorded at 60 mV/s.</li>
+                                    <li><strong>R² Score:</strong> 99.66%</li>
+                                    <li><strong>RMSE:</strong> 0.000456</li>
+                                    <li>The tight linear clustering in the residual scatter plot proves the model generalized perfectly.</li>
+                                </ul>
+                            </div>
+                            <div class="slide-chart"><canvas id="chart-scatter"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="slide" id="slide-14">
+                        <h2>14. Specific Capacitance Verification</h2>
+                        <div class="slide-layout">
+                            <div class="slide-text">
+                                <ul>
+                                    <li>The ultimate test of the model is calculating the physical energy storage capacity.</li>
+                                    <li><strong>Experimental:</strong> 115.39 F g⁻¹</li>
+                                    <li><strong>Predicted:</strong> 114.84 F g⁻¹</li>
+                                    <li>The model accurately derived the physical capacity with less than a 1% margin of error.</li>
+                                </ul>
+                            </div>
+                            <div class="slide-chart"><canvas id="chart-capacitance"></canvas></div>
+                        </div>
+                    </div>
+
+                    <div class="slide" id="slide-15">
+                        <h2>15. Future Work & Conclusion</h2>
+                        <ul>
+                            <li><strong>Integration:</strong> Connect the ML model directly to electrochemical workstations via API for real-time testing feedback.</li>
+                            <li><strong>Expansion:</strong> Scale the feature architecture to accommodate other transition metal oxides.</li>
+                            <li><strong>Conclusion:</strong> AI can reliably replace preliminary physical CV testing, massively accelerating supercapacitor research.</li>
+                        </ul>
+
+                        <div class="support-info glass-panel">
+                            <h4>Support & Open-Source Resources</h4>
+                            <p>Access the datasets, validation files, and complete model architecture used in this research.</p>
+                            <div class="resource-links">
+                                <a href="https://github.com/AnirudhRao-24/cv-ml-supercapacitor-bfo" target="_blank" class="btn-outline">💻 GitHub Repository</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="slide-controls">
+                        <button id="btn-prev" class="btn-secondary" disabled>← Previous</button>
+                        <div class="progress-container">
+                            <span id="slide-counter">Slide 1 of 15</span>
+                            <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+                        </div>
+                        <button id="btn-next" class="btn-primary">Next Slide →</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="demo-section" class="section">
+                <div id="api-status-banner" class="status-banner" style="display: none; background-color: #FEF3C7; border: 1px solid #F59E0B; color: #D97706; padding: 10px 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 600; text-align: center; animation: fadeIn 0.5s ease;">
+                    ⚠️ Warning: Live API is unreachable. Running in offline demo mode using cached predictions.
+                </div>
+                <div class="demo-layout">
+                    <div class="control-panel glass-panel">
+                        <h3>Model Parameters</h3>
+                        <p class="subtitle">Execute the live AI Meta-Model.</p>
+                        
+                        <div class="input-group">
+                            <label>Scan Rate (mV/s)</label>
+                            <select id="input-scan-rate" class="custom-select">
+                                <option value="10">10 mV/s</option>
+                                <option value="20">20 mV/s</option>
+                                <option value="40">40 mV/s</option>
+                                <option value="60" selected>60 mV/s (Validation Baseline)</option>
+                                <option value="80">80 mV/s</option>
+                                <option value="100">100 mV/s</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Dopant Matrix</label>
+                            <select id="input-dopant" class="custom-select">
+                                <option value="BFO">BFO (Pure BiFeO3)</option>
+                                <option value="BFZO1">BFZO-1 (Low Zn Substitution)</option>
+                                <option value="BFZO2">BFZO-2 (Medium Zn Substitution)</option>
+                                <option value="BFZO3" selected>BFZO-3 (High Zn Substitution)</option>
+                                <option value="BFCO1">BFCO-1 (Low Co Substitution)</option>
+                                <option value="BFCO2">BFCO-2 (Medium Co Substitution)</option>
+                                <option value="BFCO3">BFCO-3 (High Co Substitution)</option>
+                            </select>
+                        </div>
+                        <button id="btn-run-demo" class="btn-primary w-100" style="margin-top: 20px;">Execute Prediction Stack</button>
+                        
+                        <div id="export-controls" style="display: none; margin-top: 20px; gap: 10px; flex-direction: column;">
+                            <button id="btn-export-csv" class="btn-outline w-100">📥 Download CSV Data</button>
+                            <button id="btn-export-png" class="btn-outline w-100">🖼️ Save Graph as PNG</button>
+                        </div>
+                    </div>
+ 
+                    <div class="chart-panel glass-panel">
+                        <div class="chart-wrapper" style="background: #ffffff; padding: 10px; border-radius: 8px;">
+                            <canvas id="liveChart"></canvas>
+                        </div>
+                        <div class="metrics-grid" id="metrics-grid" style="display: none;">
+                            <div class="metric-card">
+                                <h4>Specific Capacitance (Lab)</h4>
+                                <div class="value" id="val-cap-lab">115.39 <span>F g⁻¹</span></div>
+                            </div>
+                            <div class="metric-card highlight">
+                                <h4>Specific Capacitance (ML)</h4>
+                                <div class="value" id="val-cap-ml">114.84 <span>F g⁻¹</span></div>
+                                <div class="sub-text" id="val-cap-error">Error margin: &lt; 1%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
