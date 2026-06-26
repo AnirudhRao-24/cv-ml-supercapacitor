@@ -5,6 +5,10 @@
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.0%2B-yellow)
 ![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
 
+**🌐 Live Web Dashboard:** [https://anirudhrao-24.github.io/cv-ml-supercapacitor-bfo/](https://anirudhrao-24.github.io/cv-ml-supercapacitor-bfo/)
+
+**🔌 Live ML API (Render):** [https://cv-ml-supercapacitor-bfo-i0cu.onrender.com/](https://cv-ml-supercapacitor-bfo-i0cu.onrender.com/)
+
 ## 📌 Project Overview
 Traditional Cyclic Voltammetry (CV) testing for supercapacitor materials is a time-intensive and highly resource-dependent process. Physical synthesis and testing of multiple dopant variations create severe bottlenecks in next-generation battery research.
 
@@ -46,11 +50,14 @@ python evaluate.py
 # To run the local API server:
 uvicorn api:app --reload
 2. The Interactive Dashboard (Web)
-To view the presentation deck and interact with the Live Simulation dashboard:
+The dashboard is currently hosted live on GitHub Pages. You can visit it here:
+**[https://anirudhrao-24.github.io/cv-ml-supercapacitor-bfo/](https://anirudhrao-24.github.io/cv-ml-supercapacitor-bfo/)**
 
-Navigate to the docs/ folder.
+To view or modify it locally, run a local web server:
 
-Double-click index.html to open it in any modern web browser.
+Bash
+cd docs
+python -m http.server 8080
 
 Use the Live Simulation tab to watch the Meta-Model predict current curves in real-time.
 
