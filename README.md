@@ -1,4 +1,4 @@
-# 🔋 ML-Based Prediction of Cyclic Voltammetry for Supercapacitors
+# 🔋 ML-Based Prediction of Cyclic oVoltammetry for Supercapacitors
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.0%2B-orange)
@@ -70,4 +70,4 @@ Frontend UI: HTML5, CSS3 (Glassmorphism UI), Vanilla JS, Chart.js.
 
 Authentication: Firebase v9.
 
-Developed as a 6-week research project to bridge the gap between material science and artificial intelligence.
+Developed as a 6-week research project to bridge the gap between material science and artificial intelligence.  
