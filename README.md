@@ -68,6 +68,6 @@ API Backend: FastAPI, Uvicorn, Pydantic.
 
 Frontend UI: HTML5, CSS3 (Glassmorphism UI), Vanilla JS, Chart.js.
 
-Authentication: Firebase v9.
+Authentication: Firebase v9. 
 
 Developed as a 6-week research project to bridge the gap between material science and artificial intelligence.  
