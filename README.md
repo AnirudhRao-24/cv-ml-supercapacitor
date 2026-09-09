@@ -3,7 +3,7 @@
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
 ![TensorFlow](https://img.shields.io/badge/TensorFlow-2.0%2B-orange)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-1.0%2B-yellow)
-![Status](https://img.shields.io/badge/Status-Complete-brightgreen)
+![Status](https://img.shields.io/badge/Status-Complete-brightgreen) 
 
 **🌐 Live Web Dashboard:** [https://anirudhrao-24.github.io/cv-ml-supercapacitor-bfo/](https://anirudhrao-24.github.io/cv-ml-supercapacitor-bfo/)
 
